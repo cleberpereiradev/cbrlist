@@ -1,4 +1,4 @@
-package com.example.cbrlist.entities;
+package com.api.cbrlist.entities;
 
 
 import java.util.Objects;

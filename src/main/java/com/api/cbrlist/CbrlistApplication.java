@@ -1,4 +1,4 @@
-package com.example.cbrlist;
+package com.api.cbrlist;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
