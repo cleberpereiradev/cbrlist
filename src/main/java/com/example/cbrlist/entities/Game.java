@@ -1,44 +1,51 @@
 package com.example.cbrlist.entities;
 
 
-import jakarta.persistence.*;
-
 import java.util.Objects;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 @Entity
-@Table(name = "game")
+@Table(name = "tb_game")
 public class Game {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    @Column(name = "game_year")
 
-    private Integer Year;
+    @Column(name = "game_year")
+    private Integer year;
     private String genre;
     private String platforms;
-    private double Score;
+    private Double score;
     private String imgUrl;
 
     @Column(columnDefinition = "TEXT")
     private String shortDescription;
 
     @Column(columnDefinition = "TEXT")
-    private String LongDescription;
+    private String longDescription;
 
     public Game() {
     }
 
-    public Game(Long id, String title, Integer year, String genre, String platforms, double score, String imgUrl, String shortDescription, String longDescription) {
+    public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
+                String shortDescription, String longDescription) {
         this.id = id;
         this.title = title;
-        Year = year;
+        this.year = year;
         this.genre = genre;
         this.platforms = platforms;
-        Score = score;
+        this.score = score;
         this.imgUrl = imgUrl;
         this.shortDescription = shortDescription;
-        LongDescription = longDescription;
+        this.longDescription = longDescription;
     }
 
     public Long getId() {
@@ -58,11 +65,11 @@ public class Game {
     }
 
     public Integer getYear() {
-        return Year;
+        return year;
     }
 
     public void setYear(Integer year) {
-        Year = year;
+        this.year = year;
     }
 
     public String getGenre() {
@@ -81,12 +88,12 @@ public class Game {
         this.platforms = platforms;
     }
 
-    public double getScore() {
-        return Score;
+    public Double getScore() {
+        return score;
     }
 
-    public void setScore(double score) {
-        Score = score;
+    public void setScore(Double score) {
+        this.score = score;
     }
 
     public String getImgUrl() {
@@ -106,23 +113,27 @@ public class Game {
     }
 
     public String getLongDescription() {
-        return LongDescription;
+        return longDescription;
     }
 
     public void setLongDescription(String longDescription) {
-        LongDescription = longDescription;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Game game = (Game) o;
-        return getId().equals(game.getId());
+        this.longDescription = longDescription;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Game other = (Game) obj;
+        return Objects.equals(id, other.id);
     }
 }
